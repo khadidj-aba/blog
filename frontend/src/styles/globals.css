@@ -1,0 +1,28 @@
+/* Ajoutez ceci dans votre fichier CSS global ou dans le fichier spécifique à Header.jsx */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #007bff;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px; /* Espacement entre les éléments du menu */
+}
+
+nav ul li {
+  list-style: none; /* Enlever les puces */
+}
+
+nav ul li a {
+  color: white; /* Couleur du texte */
+  text-decoration: none; /* Enlever le soulignement */
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #ff4500; /* Changer la couleur au survol */
+}

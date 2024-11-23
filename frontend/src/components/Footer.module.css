@@ -1,0 +1,39 @@
+/* Conteneur principal du footer */
+.footer {
+    background-color: var(--primary-color); /* Couleur principale */
+    color: white; /* Texte en blanc */
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  /* Conteneur des liens dans le footer */
+  .footer-links {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  /* Style des liens */
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: var(--secondary-color); /* Couleur secondaire au survol */
+  }
+  
+  /* Copyright */
+  .footer-copyright {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #ddd; /* Texte légèrement grisé */
+  }
+  
