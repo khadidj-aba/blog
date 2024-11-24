@@ -1,7 +1,7 @@
 :root {
     --primary-color: #007bff; /* Couleur principale */
     --secondary-color: #28a745; /* Couleur secondaire */
-    --background-color: #f8f9fa; /* Couleur de fond */
+    --background-color: white/* Couleur de fond */
     --text-color: #212529; /* Couleur du texte */
     --font-family: 'Arial', sans-serif;
   }

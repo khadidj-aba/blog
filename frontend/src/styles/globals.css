@@ -1,3 +1,6 @@
+
+
+
 /* Ajoutez ceci dans votre fichier CSS global ou dans le fichier spécifique à Header.jsx */
 
 header {
@@ -5,7 +8,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #007bff;
+  background-color: goldenrod;
 }
 
 nav ul {
@@ -25,4 +28,28 @@ nav ul li a {
 
 nav ul li a:hover {
   color: #ff4500; /* Changer la couleur au survol */
+}
+
+/* src/styles/globals.css */
+.homePageBackground {
+  background-image: url('/images/image1.webp');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: white;
+  padding: 20px;
+}
+
+/* src/styles/home.module.css */
+.homePageBackground {
+  background-image: url('/images/image1.webp');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* La page couvrira toute la hauteur de l'écran */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrer verticalement le contenu */
+  align-items: center; /* Centrer horizontalement le contenu */
+  padding: 20px; /* Ajoutez du padding si nécessaire */
 }
