@@ -1,18 +1,13 @@
-import { useRouter } from 'next/router';
+// src/pages/signup.js
+import SignupForm from '../components/SignupForm';
 
-const SigninPage = () => {
-  const router = useRouter();
-  
-  if (router.pathname === '/signin') {
-    // L'utilisateur est déjà sur la page de connexion, évitez de rediriger
-    return null;
-  }
-
+const SignupPage = () => {
   return (
     <div>
-      {/* Votre formulaire de connexion */}
+      <h1>Inscription</h1>
+      <SignupForm />
     </div>
   );
 };
 
-export default SigninPage;
+export default SignupPage;

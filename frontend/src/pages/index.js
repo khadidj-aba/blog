@@ -25,7 +25,19 @@ const HomePage = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage: "url('/images/image1.webp')", // Utiliser l'image depuis le dossier public
+        backgroundSize: 'cover', // Couvrir toute la surface de la page
+        backgroundPosition: 'center', // Centrer l'image
+        height: '100vh', // Hauteur de la page (sur toute la hauteur de l'écran)
+        color: 'white',  // Si nécessaire, changer la couleur du texte pour qu'il soit visible sur l'image
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',  // Centrer le contenu de la page verticalement
+        alignItems: 'center',  // Centrer le contenu de la page horizontalement
+        padding: '20px',  // Ajouter du padding si nécessaire
+      }}>
       <h1 className="text-2xl font-bold mb-4">Liste des Articles</h1>
       {/* Bouton pour afficher le formulaire */}
       <button
