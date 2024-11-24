@@ -1,64 +1,78 @@
-import React, { useState } from 'react';
+// src/components/SignupForm.jsx
+import { useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const SignupForm = () => {
-  // États pour stocker les valeurs des champs du formulaire
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null); // Pour afficher les erreurs si elles se produisent
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  // Fonction appelée lors de la soumission du formulaire
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Empêche le rechargement de la page lors de la soumission
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setError('Les mots de passe ne correspondent pas.');
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
 
     try {
-      // Envoi des données de l'utilisateur au backend pour l'inscription
       const response = await axios.post('http://localhost:5000/api/auth/signup', {
         username,
-        password,
+        password
       });
 
-      // Si la requête est réussie, on affiche un message de succès
       if (response.status === 201) {
-        alert('Utilisateur créé avec succès');
+        router.push('/login'); // Rediriger vers la page de connexion après l'inscription réussie
       }
-    } catch (error) {
-      // Si une erreur se produit, on affiche le message d'erreur
-      setError('Erreur lors de l\'inscription. Veuillez réessayer.');
-      console.error('Erreur lors de l\'inscription', error);
+    } catch (err) {
+      setError(err.response ? err.response.data.message : 'Erreur inconnue');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
-      <h2>S'inscrire</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>} {/* Affichage de l'erreur s'il y en a une */}
+      {/* <h1>Inscription</h1> */}
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="username">Nom d'utilisateur</label>
+          <label>Nom d'utilisateur</label>
           <input
             type="text"
-            id="username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)} // Mise à jour de l'état pour le nom d'utilisateur
-            placeholder="Entrez votre nom d'utilisateur"
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
         <div>
-          <label htmlFor="password">Mot de passe</label>
+          <label>Mot de passe</label>
           <input
             type="password"
-            id="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)} // Mise à jour de l'état pour le mot de passe
-            placeholder="Entrez votre mot de passe"
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
         <div>
-          <button type="submit">S'inscrire</button>
+          <label>Confirmer le mot de passe</label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
         </div>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <button type="submit" disabled={loading}>
+          {loading ? 'Chargement...' : 'S\'inscrire'}
+        </button>
       </form>
     </div>
   );
